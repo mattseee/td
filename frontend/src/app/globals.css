@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Фоны */
+  --bg:           #F5F6F8;
+  --surface:      #FFFFFF;
+  --surface-2:    #F9FAFB;
+  --border:       #E5E7EB;
+  --border-2:     #D1D5DB;
+
+  /* Текст */
+  --text:         #1A1D27;
+  --text-muted:   #6B7280;
+  --text-subtle:  #9CA3AF;
+
+  /* Акценты */
+  --accent:       #2563EB;
+  --accent-hover: #1D4ED8;
+  --accent-soft:  #DBEAFE;
+  --accent-text:  #1E40AF;
+
+  /* Брендовый акцент */
+  --brand-red:    #EF4444;
+  --brand-navy:   #1E3A8A;
+
+  /* Семантика */
+  --success:      #10B981;
+  --success-soft: #D1FAE5;
+  --danger:       #DC2626;
+  --danger-soft:  #FEE2E2;
+  --warning:      #F59E0B;
+  --warning-soft: #FEF3C7;
+  --info:         #3B82F6;
+
+  /* Бейджи (пастельные) */
+  --badge-exclusive-bg:   #EDE9FE;
+  --badge-exclusive-text: #6D28D9;
+  --badge-sale-bg:        #FEE2E2;
+  --badge-sale-text:      #B91C1C;
+  --badge-hit-bg:         #DBEAFE;
+  --badge-hit-text:       #1E40AF;
+  --badge-promo-bg:       #FEF3C7;
+  --badge-promo-text:     #92400E;
+}
+
+/* Тёмная тема для админки */
+.theme-admin {
+  --bg:           #0F1117;
+  --surface:      #1A1D27;
+  --surface-2:    #232736;
+  --border:       #2E3347;
+  --border-2:     #3a4060;
+  --text:         #F0F2F8;
+  --text-muted:   #7A8099;
+  --text-subtle:  #4a5068;
+  --accent:       #3B82F6;
+  --accent-hover: #2563EB;
+  --accent-soft:  rgba(59,130,246,0.15);
+  --accent-text:  #93C5FD;
+  --brand-red:    #EF4444;
+  --brand-navy:   #93C5FD;
+  --success:      #2ECC8A;
+  --success-soft: rgba(46,204,138,0.15);
+  --danger:       #FF4D6D;
+  --danger-soft:  rgba(255,77,109,0.15);
+  --warning:      #F59E0B;
+  --warning-soft: rgba(245,158,11,0.15);
+  --info:         #4D9EFF;
+  --badge-exclusive-bg:   rgba(109,40,217,0.2);
+  --badge-exclusive-text: #C4B5FD;
+  --badge-sale-bg:        rgba(185,28,28,0.2);
+  --badge-sale-text:      #FCA5A5;
+  --badge-hit-bg:         rgba(30,64,175,0.2);
+  --badge-hit-text:       #93C5FD;
+  --badge-promo-bg:       rgba(146,64,14,0.2);
+  --badge-promo-text:     #FDE68A;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: 24px; font-weight: 700; }
+h3 { font-size: 18px; font-weight: 600; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile padding for bottom nav */
+@media (max-width: 767px) {
+  main { padding-bottom: 60px; }
+}
+
+/* Hide bottom-nav on desktop */
+@media (min-width: 768px) {
+  nav.bottom-nav { display: none !important; }
+}
+
+/* Visible focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth hover transitions on interactive elements */
+button, a, [role="button"] {
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+/* Visual rhythm utilities */
+.section-gap { margin-bottom: 48px; }
+.card-gap { gap: 16px; }
+
+/* Mobile horizontal scroll for product grids */
+@media (max-width: 767px) {
+  .mobile-scroll-grid {
+    display: flex !important;
+    overflow-x: auto;
+    gap: 12px !important;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+  .mobile-scroll-grid::-webkit-scrollbar { display: none; }
+  .mobile-scroll-grid > * {
+    flex-shrink: 0;
+    width: 200px !important;
+  }
+}
+
+/* Improved touch targets on mobile (bottom nav, main actions) */
+@media (max-width: 767px) {
+  nav.bottom-nav a {
+    min-height: 56px;
+  }
+}
